@@ -6,11 +6,6 @@ A responsive data table component built with React and TypeScript that displays 
 
 [Demo Video Link](https://drive.google.com/file/d/1l-Y_P1e_Xzf-pl3BXqFV032WHWs37AE6/view?usp=sharing)
 
-## Demo App
-The application is deployed on [Vercel](https://vercel.com/) and can be accessed at the following link:
-
-[Country Finder Demo](https://test-task1-seven.vercel.app/?page=1&entries=10)
-
 ## Getting Started
 
 ### 1. Clone the Repository
