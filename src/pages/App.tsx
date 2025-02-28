@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useMemo } from "react";
-import "../styles/index.css";
-import { CountryService } from "../services/CountryService";
+import React, { useEffect, useMemo, useState } from "react";
+import CountryTable from "../components/CountryTable";
 import Filters from "../components/Filters";
 import Loading from "../components/Loading";
 import Pagination from "../components/Pagination";
 import SearchBar from "../components/SearchBar";
-import CountryTable from "../components/CountryTable";
+import { CountryService } from "../services/CountryService";
+import "../styles/index.css";
 
 import { MdErrorOutline } from "react-icons/md";
 import { debounce, fuzzyMatch } from "../utils/searchUtils";
@@ -67,8 +67,8 @@ const App: React.FC = () => {
   useEffect(() => {
     if (!countries.length) return;
 
-    let filtered = countries;
-    const lowerSearch = debouncedSearch.toLowerCase();
+    let filtered: Country[] = countries;
+    const lowerSearch: string = debouncedSearch.toLowerCase();
 
     if (debouncedSearch) {
       if (searchType === "code") {
@@ -107,7 +107,7 @@ const App: React.FC = () => {
     });
 
     if (filtered.length === 0) {
-      setError("No countries found!");
+      setError("No countries  matching your search or filters.");
     } else {
       setError(null);
       setFilteredCountries(filtered);

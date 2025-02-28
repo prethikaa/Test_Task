@@ -64,7 +64,7 @@ export const CountryService = {
 
       return data.countries;
     } catch (error) {
-      throw new Error("No countries found.");
+      throw new Error("No countries found matching your search or filters.");
     }
   },
 };
