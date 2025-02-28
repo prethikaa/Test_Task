@@ -72,9 +72,15 @@ const App: React.FC = () => {
 
     if (debouncedSearch) {
       if (searchType === "code") {
-        filtered = countries.filter(
-          (country) => country.code.toLowerCase() === lowerSearch
-        );
+        if (lowerSearch.length === 1) {
+          filtered = countries.filter((country) =>
+            country.code.toLowerCase().startsWith(lowerSearch)
+          );
+        } else if (lowerSearch.length === 2) {
+          filtered = countries.filter(
+            (country) => country.code.toLowerCase() === lowerSearch
+          );
+        }
       } else {
         filtered = countries
           .map((country) => ({
@@ -93,7 +99,9 @@ const App: React.FC = () => {
     }
 
     filtered = filtered.filter((country) => {
-      const matchesContinent = continent ? country.continent.code === continent : true;
+      const matchesContinent = continent
+        ? country.continent.code === continent
+        : true;
       const matchesCurrency = currency ? country.currency === currency : true;
       return matchesContinent && matchesCurrency;
     });
@@ -103,7 +111,6 @@ const App: React.FC = () => {
     } else {
       setError(null);
       setFilteredCountries(filtered);
-     
     }
     if (page > Math.ceil(filtered.length / entriesPerPage)) {
       setPage(1);
@@ -115,7 +122,11 @@ const App: React.FC = () => {
       const params = new URLSearchParams(window.location.search);
       params.set("page", page.toString());
       params.set("entries", entriesPerPage.toString());
-      window.history.pushState({}, "", `${window.location.pathname}?${params.toString()}`);
+      window.history.pushState(
+        {},
+        "",
+        `${window.location.pathname}?${params.toString()}`
+      );
     };
 
     updateUrl();

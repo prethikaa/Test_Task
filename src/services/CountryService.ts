@@ -59,12 +59,12 @@ export const CountryService = {
       });
 
       if (!data.countries || data.countries.length === 0) {
-        throw new Error("No countries available for the selected filters.");
+        throw new Error("No countries  matching your search or filters.");
       }
 
       return data.countries;
     } catch (error) {
-      throw new Error("No countries found matching your search or filters.");
+      throw new Error("No countries found.");
     }
   },
 };
