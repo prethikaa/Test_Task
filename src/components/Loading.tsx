@@ -4,7 +4,7 @@ const Loading: React.FC = () => {
   return (
     <div className="animate-pulse w-full">
       <div className="m-2">
-        <div className="h-9 w-40 bg-gray-100 rounded"></div>
+        <div><strong>Loading...</strong></div>
       </div>
       <table className="m-2 w-full border border-gray-100 rounded-lg">
         <thead>

@@ -100,7 +100,7 @@ const Pagination: React.FC<PaginationProps> = ({
           setEntriesPerPage(Number(e.target.value));
           setPage(1);
         }}
-        className="p-2 shadow-sm bg-white  focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-500 cursor-pointer"
+        className="p-2 shadow-sm bg-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-500 cursor-pointer"
       >
         <option value={10}>10</option>
         <option value={20}>20</option>

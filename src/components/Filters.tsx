@@ -18,12 +18,12 @@ const Filters: React.FC<FiltersProps> = ({
 }) => {
   return (
     <div className="m-2 flex flex-row flex-wrap justify-start gap-4">
-      <div className="relative">
-        <BiWorld className="absolute left-3 top-1/2 -translate-y-1/2  text-xl" />
+      <div className="flex flex-row sm:flex-row items-center gap-2 p-2 shadow-sm bg-white border border-gray-500  focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-500 cursor-pointer">
+        <BiWorld className="text-xl" />
         <select
           value={continent}
           onChange={(e) => setContinent(e.target.value)}
-          className="w-44 pl-10 p-2 shadow-sm bg-white  focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-500 cursor-pointer"
+          className=""
         >
           {ALL_CONTINENTS.map(({ code, name }) => (
             <option key={code} value={code}>
@@ -32,13 +32,13 @@ const Filters: React.FC<FiltersProps> = ({
           ))}
         </select>
       </div>
-
-      <div className="relative">
-        <BsCashCoin className="absolute left-3 top-1/2 -translate-y-1/2 text-xl" />
+  
+      <div className="flex flex-row sm:flex-row items-center gap-2 p-2 shadow-sm bg-white border border-gray-500  focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-500 cursor-pointer">
+      <BsCashCoin className="text-xl"/>
         <select
           value={currency}
           onChange={(e) => setCurrency(e.target.value)}
-          className="w-44 pl-10 p-2 shadow-sm bg-white  focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-500 cursor-pointer"
+          className=""
         >
           {ALL_CURRENCIES.map(({ code, name }) => (
             <option key={code} value={code}>
