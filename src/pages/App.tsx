@@ -117,9 +117,8 @@ const App: React.FC = () => {
       setError(null);
       setFilteredCountries(filtered);
     }
-    if (page > Math.ceil(filtered.length / entriesPerPage)) {
-      setPage(1);
-    }
+
+    setPage(1);
   }, [countries, continent, currency, debouncedSearch]);
 
   // Update the URL with pagination details
