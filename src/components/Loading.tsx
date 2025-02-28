@@ -1,5 +1,6 @@
 import React from "react";
 
+//Loading Component
 const Loading: React.FC = () => {
   return (
     <div className="animate-pulse w-full">
@@ -8,6 +9,7 @@ const Loading: React.FC = () => {
           <strong>Loading...</strong>
         </div>
       </div>
+      {/* Table skeleton with placeholder content */}
       <table className="m-2 w-full border border-gray-100 rounded-lg">
         <thead>
           <tr className="bg-gray-100">

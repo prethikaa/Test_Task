@@ -6,10 +6,10 @@ import Pagination from "../components/Pagination";
 import SearchBar from "../components/SearchBar";
 import { CountryService } from "../services/CountryService";
 import "../styles/index.css";
-
 import { MdErrorOutline } from "react-icons/md";
 import { debounce, fuzzyMatch } from "../utils/searchUtils";
 
+// Country interface
 interface Country {
   name: string;
   code: string;
@@ -21,6 +21,7 @@ interface Country {
 }
 
 const App: React.FC = () => {
+  // State for managing countries data, filtered results, loading, errors, search, and pagination.
   const [countries, setCountries] = useState<Country[]>([]);
   const [filteredCountries, setFilteredCountries] = useState<Country[]>([]);
   const [loading, setLoading] = useState(false);
@@ -35,6 +36,8 @@ const App: React.FC = () => {
   const [entriesPerPage, setEntriesPerPage] = useState(
     () => Number(params.get("entries")) || 10
   );
+
+  // Updates the debounced search query
   const debouncedUpdateSearch = useMemo(
     () =>
       debounce((query: string) => {
@@ -47,6 +50,7 @@ const App: React.FC = () => {
     debouncedUpdateSearch(search);
   }, [search]);
 
+  //Fetch data from API
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -64,14 +68,14 @@ const App: React.FC = () => {
     fetchData();
   }, [continent, currency]);
 
+  // Filter countries based on search, continent, and currency
   useEffect(() => {
     if (!countries.length) return;
-
     let filtered: Country[] = countries;
     const lowerSearch: string = debouncedSearch.toLowerCase();
-
     if (debouncedSearch) {
       if (searchType === "code") {
+        // Filter countries by code (exact or starts with)
         if (lowerSearch.length === 1) {
           filtered = countries.filter((country) =>
             country.code.toLowerCase().startsWith(lowerSearch)
@@ -82,6 +86,7 @@ const App: React.FC = () => {
           );
         }
       } else {
+        // Filter countries by country name (Fuzzy search)
         filtered = countries
           .map((country) => ({
             ...country,
@@ -97,7 +102,7 @@ const App: React.FC = () => {
           });
       }
     }
-
+    //Filtering based on continent and currency
     filtered = filtered.filter((country) => {
       const matchesContinent = continent
         ? country.continent.code === continent
@@ -117,6 +122,7 @@ const App: React.FC = () => {
     }
   }, [countries, continent, currency, debouncedSearch]);
 
+  // Update the URL with pagination details
   useEffect(() => {
     const updateUrl = () => {
       const params = new URLSearchParams(window.location.search);
@@ -132,6 +138,7 @@ const App: React.FC = () => {
     updateUrl();
   }, [page, entriesPerPage]);
 
+  // Sync state with browser navigation
   useEffect(() => {
     const handlePopState = () => {
       const params = new URLSearchParams(window.location.search);
@@ -143,6 +150,7 @@ const App: React.FC = () => {
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
+  // Pagination calculation for current page's data slice.
   const indexOfLastCountry = page * entriesPerPage;
   const indexOfFirstCountry = indexOfLastCountry - entriesPerPage;
   const currentCountries = filteredCountries.slice(

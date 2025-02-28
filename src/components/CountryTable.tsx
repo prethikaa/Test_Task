@@ -1,5 +1,6 @@
 import React from "react";
 
+// Country interface
 interface Country {
   name: string;
   code: string;
@@ -10,14 +11,17 @@ interface Country {
   };
 }
 
+// CountryTableProps interface
 interface CountryTableProps {
   countries: Country[];
 }
 
+//Table Component
 const CountryTable: React.FC<CountryTableProps> = ({ countries }) => {
   return (
     <div className="w-full m-2 pr-4 sm:pr-8 lg:pr-16">
       <div className="overflow-x-auto">
+        {/* Table to display country data */}
         <table className="w-full min-w-max border-collapse border border-gray-300">
           <thead>
             <tr className=" text-left ">

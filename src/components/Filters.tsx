@@ -3,6 +3,7 @@ import { BiWorld } from "react-icons/bi";
 import { BsCashCoin } from "react-icons/bs";
 import { ALL_CONTINENTS, ALL_CURRENCIES } from "../utils/constants";
 
+// FiltersProps interface
 interface FiltersProps {
   continent: string;
   setContinent: React.Dispatch<React.SetStateAction<string>>;
@@ -10,6 +11,7 @@ interface FiltersProps {
   setCurrency: React.Dispatch<React.SetStateAction<string>>;
 }
 
+//Filter Component
 const Filters: React.FC<FiltersProps> = ({
   continent,
   setContinent,
@@ -18,6 +20,7 @@ const Filters: React.FC<FiltersProps> = ({
 }) => {
   return (
     <div className="m-2 flex flex-row flex-wrap justify-start gap-4">
+      {/* Continent filter dropdown */}
       <div className="flex flex-row sm:flex-row items-center gap-2 p-2 shadow-sm bg-white border border-gray-500  focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-500 cursor-pointer">
         <BiWorld className="text-xl" />
         <select
@@ -32,6 +35,7 @@ const Filters: React.FC<FiltersProps> = ({
         </select>
       </div>
 
+      {/* Currency filter dropdown */}
       <div className="flex flex-row sm:flex-row items-center gap-2 p-2 shadow-sm bg-white border border-gray-500  focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-500 cursor-pointer">
         <BsCashCoin className="text-xl" />
         <select value={currency} onChange={(e) => setCurrency(e.target.value)}>

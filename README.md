@@ -14,11 +14,11 @@ The application is deployed on [Vercel](https://vercel.com/) and can be accessed
 
 git clone https://github.com/prethikaa/Test_Task.git
 
-### 2. Install Dependencies**
+### 2. Install Dependencies
 
 npm install
 
-### 3. Run the Frontend**
+### 3. Run the Frontend
 
 npm run dev
 
@@ -54,7 +54,7 @@ npm run dev
    - Filters are combinable and update results in real-time.
 
 ### 5. **Responsive Design**
-   - The application is fully responsive and works seamlessly across various screen sizes (mobile, tablet, and desktop).
+   - The application is fully responsive and works seamlessly across various screen sizes (mobile, tablet, and desktop) styled using Tailwind CSS.
 
 ### 6. **Error Handling**
    - Added error handling to display user-friendly messages when no results are found or if an issue arises during the API call.

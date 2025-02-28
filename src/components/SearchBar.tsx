@@ -1,6 +1,7 @@
 import React from "react";
 import { TbSearch } from "react-icons/tb";
 
+// SearchBarProps interface
 interface SearchBarProps {
   search: string;
   setSearch: React.Dispatch<React.SetStateAction<string>>;
@@ -8,12 +9,14 @@ interface SearchBarProps {
   setSearchType: React.Dispatch<React.SetStateAction<"name" | "code">>;
 }
 
+//SearchBar Component
 const SearchBar: React.FC<SearchBarProps> = ({
   search,
   setSearch,
   searchType,
   setSearchType,
 }) => {
+  // Handle the change in the search input
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value;
     console.log(value);
@@ -30,6 +33,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
   return (
     <div className="m-2 flex flex-col items-start gap-2">
       <div className="flex items-start gap-2 text-sm">
+        {/* Radio buttons for selecting the search type (by country name or code) */}
         <div className="text-gray-500">Search By</div>
         <label className="flex items-center gap-2 cursor-pointer">
           <input
@@ -60,6 +64,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
         </label>
       </div>
 
+      {/* Search input field with a search icon */}
       <div className="relative w-full max-w-lg">
         <TbSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-xl" />
         <input

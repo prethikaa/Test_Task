@@ -1,6 +1,7 @@
 import React from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
+//PaginationProps interface
 interface PaginationProps {
   page: number;
   setPage: React.Dispatch<React.SetStateAction<number>>;
@@ -9,6 +10,7 @@ interface PaginationProps {
   totalItems: number;
 }
 
+//Pagination Component
 const Pagination: React.FC<PaginationProps> = ({
   page,
   setPage,
@@ -16,17 +18,22 @@ const Pagination: React.FC<PaginationProps> = ({
   setEntriesPerPage,
   totalItems,
 }) => {
+  // Calculate the total number of pages
   const totalPages = Math.ceil(totalItems / entriesPerPage);
 
+  // Function to generate the page numbers displayed on the pagination
   const generatePageNumbers = () => {
     const pages = [];
+    // Maximum number of pages to show
     const maxPagesToShow = 5;
 
     if (totalPages <= maxPagesToShow) {
+      // Show all pages if the total pages are less than or equal to maxPagesToShow
       for (let i = 1; i <= totalPages; i++) {
         pages.push(i);
       }
     } else {
+      // Handle the pagination display when there are more than maxPagesToShow pages
       if (page <= 3) {
         pages.push(1, 2, 3, 4, "...", totalPages);
       } else if (page >= totalPages - 2) {
@@ -48,6 +55,7 @@ const Pagination: React.FC<PaginationProps> = ({
 
   return (
     <div className="m-2 flex flex-wrap items-center justify-center gap-2 ">
+      {/* Button to go to the previous page */}
       <button
         onClick={() => setPage(page - 1)}
         disabled={page <= 1}
@@ -61,6 +69,7 @@ const Pagination: React.FC<PaginationProps> = ({
       </button>
 
       <div className="flex flex-wrap items-center justify-center space-x-2">
+        {/* Generate the page numbers and display them */}
         {generatePageNumbers().map((pageNum, index) =>
           pageNum === "..." ? (
             <span key={index} className="px-2 py-2 text-gray-500 ">
@@ -82,6 +91,7 @@ const Pagination: React.FC<PaginationProps> = ({
         )}
       </div>
 
+      {/* Button to go to the next page */}
       <button
         onClick={() => setPage(page + 1)}
         disabled={page >= totalPages}
@@ -93,7 +103,7 @@ const Pagination: React.FC<PaginationProps> = ({
       >
         <IoIosArrowForward />
       </button>
-
+      {/* Dropdown to select number of entries per page */}
       <select
         value={entriesPerPage}
         onChange={(e) => {
