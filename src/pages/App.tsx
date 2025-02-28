@@ -20,6 +20,7 @@ interface Country {
   };
 }
 
+//App Component
 const App: React.FC = () => {
   // State for managing countries data, filtered results, loading, errors, search, and pagination.
   const [countries, setCountries] = useState<Country[]>([]);
