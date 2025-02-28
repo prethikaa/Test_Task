@@ -176,8 +176,8 @@ const App: React.FC = () => {
         />
 
         {error ? (
-          <div className="m-2 flex items-center justify-center bg-red-100 text-red-600 p-4 rounded-md shadow-md gap-2 ">
-            <MdErrorOutline className="text-red-600 text-2xl" /> {error}
+          <div className="m-2 flex items-center border  justify-center p-4 shadow-md gap-2 ">
+            <MdErrorOutline className="text-2xl" /> {error}
           </div>
         ) : loading ? (
           <Loading />
