@@ -33,3 +33,5 @@ export const fuzzyMatch = (query: string, target: string): number => {
   // Return match percentage
   return matchCount / query.length;
 };
+
+//Alternatively we can use Fuse.js library to implement fuzzy search.
